@@ -9,7 +9,7 @@ public class PropertiesFile {
 
     public static String getProperty(String data){
         try{
-            InputStream input = new FileInputStream("/src/main/resources/data.properties");
+            InputStream input = new FileInputStream("src/main/resources/data.properties");
             prop.load(input);
         } catch(Exception e) {
             System.out.println(e.getMessage());
