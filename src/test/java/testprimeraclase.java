@@ -1,4 +1,5 @@
 import Utility.DriverManager;
+import Utility.PropertiesFile;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -8,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class testprimeraclase {
-    private String url = "http://www.google.com.ar";
+    private String url = PropertiesFile.getProperty("url");
     private WebDriver driver = DriverManager.getDriver("chrome");
 
     @Test
