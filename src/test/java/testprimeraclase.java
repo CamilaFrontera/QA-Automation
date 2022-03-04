@@ -1,10 +1,7 @@
 import Utility.DriverManager;
 import Utility.PropertiesFile;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.lang.model.element.Element;
@@ -23,12 +20,13 @@ public class testprimeraclase {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(By.linkText("Laptops")).click();
         Thread.sleep(3000);
-        driver.findElement(By.linkText("Sony vaio i5")).click();
+        driver.findElement(By.cssSelector("div#tbodyid > div:nth-child(1) >div > a")).click();
         Thread.sleep(3000);
 
         driver.findElement(By.linkText("Add to cart")).click();
         Thread.sleep(3000);
-
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
 
         driver.quit();
     }
