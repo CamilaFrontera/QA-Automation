@@ -1,19 +1,15 @@
 import Utility.DriverManager;
 import Utility.PropertiesFile;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import javax.lang.model.element.Element;
 import java.util.concurrent.TimeUnit;
 
-
 public class testprimeraclase {
-    private String url = "https://www.demoblaze.com/";
+    private String url = PropertiesFile.getProperty("url");
     private WebDriver driver = DriverManager.getDriver("chrome");
 
     @Test
-    //creo método
     public void navigateToDemoblaze() throws InterruptedException {
         driver.get(url);
         driver.manage().window().maximize();
@@ -22,14 +18,16 @@ public class testprimeraclase {
         Thread.sleep(3000);
         driver.findElement(By.cssSelector("div#tbodyid > div:nth-child(1) >div > a")).click();
         Thread.sleep(3000);
-
+        String laptopModel = driver.findElement(By.cssSelector("div#tbodyid > h2")).getText();
+        System.out.println(laptopModel);
+        String laptopPrice = driver.findElement(By.cssSelector("div#tbodyid > h3")).getText();
+        Assert.assertTrue("Text not found!", laptopPrice.contains("$790"));
+        System.out.println(laptopPrice);
         driver.findElement(By.linkText("Add to cart")).click();
         Thread.sleep(3000);
         Alert alert = driver.switchTo().alert();
-        alert.accept();
-
+        alert.dismiss();
+        Thread.sleep(3000);
         driver.quit();
     }
 }
-//a[contains(text(),'Sony vaio i5')]
-//a[contains(text(),'Laptops')]
