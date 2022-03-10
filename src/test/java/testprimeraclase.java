@@ -28,6 +28,7 @@ public class testprimeraclase {
         System.out.println(laptopModel);
 
         String laptopPrice = driver.findElement(By.cssSelector("div#tbodyid > h3")).getText();
+        Assert.assertTrue("El precio encontrado es diferente al esperado ($790).", laptopPrice.contains("$790"));
         System.out.println(laptopPrice);
 
         driver.findElement(By.linkText("Add to cart")).click();
@@ -36,7 +37,7 @@ public class testprimeraclase {
 
         driver.quit();
     }
-    
+
 }
 
 
