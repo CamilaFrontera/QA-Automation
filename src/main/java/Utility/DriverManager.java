@@ -11,7 +11,7 @@ public class DriverManager {
     public static String browser;
     public static String driverPath = "src/main/resources/Drivers/";
 
-    public static WebDriver getDriver(String chrome) {
+    public static WebDriver getDriver() {
         browser = PropertiesFile.getProperty("browser");
         if (browser.equals("chrome")) {
             System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
