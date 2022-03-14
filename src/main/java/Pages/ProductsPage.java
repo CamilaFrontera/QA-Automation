@@ -21,13 +21,4 @@ public class ProductsPage {
     public void selectProduct(){
         firstProduct.click();
     }
-
-    public void dismissAlert(){
-        WebDriverWait wait = new WebDriverWait(driver,3);
-        wait.until(ExpectedConditions.alertIsPresent());
-        driver.switchTo().alert().accept();
-    }
-
-
-
 }
