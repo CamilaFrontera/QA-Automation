@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Scanner;
+
 public class ProductPage {
     @FindBy(xpath = "//div//descendant::h2[@class='name']")
     WebElement productName;
@@ -20,11 +22,15 @@ public class ProductPage {
     }
 
 
+    public String savePrice(){
+        String  str = productPrice.getText();
+        String price = str.replaceAll("[^0-9]", "");
+        System.out.print(price);
+        return price;
+
+    }
     public String saveModel(){
         return productName.getText();
-    }
-    public String savePrice(){
-        return productPrice.getText();
     }
 
     public void addToCart(){
