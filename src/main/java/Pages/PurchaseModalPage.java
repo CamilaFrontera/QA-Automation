@@ -30,14 +30,19 @@ public class PurchaseModalPage {
         PageFactory.initElements(driver,this);
     }
 
-    public void fillForm(){
-        inputName.sendKeys("test");
-        inputCountry.sendKeys("test");
-        inputCity.sendKeys("test");
-        inputCC.sendKeys("test");
-        inputMonth.sendKeys("test");
-        inputYear.sendKeys("test");
-        purchaseButton.click();
+    public void fillForm(String name, String country, String city, String creditCard, String month, String year){
 
+        inputName.sendKeys(name);
+        inputCountry.sendKeys(country);
+        inputCity.sendKeys(city);
+        inputCC.sendKeys(creditCard);
+        inputMonth.sendKeys(month);
+        inputYear.sendKeys(year);
+        purchaseButton.click();
     }
+
+
+
+
+
 }

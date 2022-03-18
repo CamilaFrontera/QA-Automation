@@ -21,16 +21,15 @@ public class ProductPage {
         PageFactory.initElements(driver,this);
     }
 
+    public String saveModel(){
+        return productName.getText();
+    }
 
     public String savePrice(){
         String  str = productPrice.getText();
         String price = str.replaceAll("[^0-9]", "");
         System.out.print(price);
         return price;
-
-    }
-    public String saveModel(){
-        return productName.getText();
     }
 
     public void addToCart(){
