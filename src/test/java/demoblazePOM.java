@@ -1,3 +1,4 @@
+import DataProviders.DataProviders;
 import Pages.*;
 import Utility.DriverManager;
 import org.openqa.selenium.WebDriver;
@@ -5,8 +6,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
+import javax.xml.crypto.Data;
 
 public class demoblazePOM {
     final String URL = "https://www.demoblaze.com/index.html";
@@ -32,8 +36,8 @@ public class demoblazePOM {
         purchaseModalPage = new PurchaseModalPage(driver);
     }
 
-    @Test
-    public void purchaseLaptop(){
+    @Test(dataProvider = "purchaseForm", dataProviderClass = DataProviders.class)
+    public void purchaseLaptop(String name, String country, String city, String creditCard, String month, String year){
         productsPage.selectProduct();
         productPage.addToCart();
         String productModel = productPage.saveModel();
@@ -51,7 +55,7 @@ public class demoblazePOM {
         System.out.println("Product price test completed.");
         softAssert.assertAll();
         cartPage.placeOrder();
-        purchaseModalPage.fillForm("name","country","city","creditCard", "month", "year");
+        purchaseModalPage.fillForm(name, country,city,creditCard,month,year);
         softAssert.assertEquals(purchaseConfirmationPage.checkMessage(), "Thank you for your purchase!");
         purchaseConfirmationPage.confirmPurchase();
     }
