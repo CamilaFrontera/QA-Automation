@@ -37,8 +37,9 @@ public class demoblazePOM {
     }
 
     @Test(dataProvider = "purchaseForm", dataProviderClass = DataProviders.class)
-    public void purchaseLaptop(String name, String country, String city, String creditCard, String month, String year){
-        productsPage.selectProduct();
+    public void purchaseLaptop(String name, String country, String city, String creditCard, String month, String year) throws InterruptedException {
+        Thread.sleep(2000);
+        productsPage.clickProduct(780,890);
         productPage.addToCart();
         String productModel = productPage.saveModel();
         String productPrice = productPage.savePrice();
@@ -58,6 +59,12 @@ public class demoblazePOM {
         purchaseModalPage.fillForm(name, country,city,creditCard,month,year);
         softAssert.assertEquals(purchaseConfirmationPage.checkMessage(), "Thank you for your purchase!");
         purchaseConfirmationPage.confirmPurchase();
+        System.out.println("Data comparisson test started.");
+        softAssert.assertEquals(purchaseConfirmationPage.amount(), cartPage.savePrice());
+        softAssert.assertEquals(purchaseConfirmationPage.cardNumber(),creditCard);
+        softAssert.assertEquals(purchaseConfirmationPage.name(),name);
+        System.out.println("Data comparisson test completed.");
+        softAssert.assertAll();
     }
 
     @AfterTest
