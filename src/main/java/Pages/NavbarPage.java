@@ -15,7 +15,6 @@ public class NavbarPage {
         PageFactory.initElements(driver,this);
     }
 
-
     public void navigateToCart(){
         cartTab.click();
     }

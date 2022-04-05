@@ -7,7 +7,6 @@ public class DataProviders {
     public static Object [][] getData(){
         return new Object[][]{
                 {"nameTest","countryTest","cityTest","ccTest","monthTest","yearTest"}
-                };
+        };
     }
-
 }

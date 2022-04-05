@@ -14,9 +14,7 @@ public class CartPage {
     WebElement placeOrder;
     WebDriver driver;
 
-    public String saveModel(){return productModelCart.getText();
-    }
-
+    public String saveModel(){return productModelCart.getText();}
     public String savePrice(){return productPriceCart.getText();}
 
     public CartPage(WebDriver driver) {

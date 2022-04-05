@@ -31,7 +31,6 @@ public class PurchaseModalPage {
     }
 
     public void fillForm(String name, String country, String city, String creditCard, String month, String year){
-
         inputName.sendKeys(name);
         inputCountry.sendKeys(country);
         inputCity.sendKeys(city);

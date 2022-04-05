@@ -25,29 +25,23 @@ public class PurchaseConfirmationPage {
         return confirmPurchase.getText();
     }
 
-
     public String amount(){
-        String p = text.getText();
-        String amount = p.substring(20,23);
-        System.out.println(amount);
+        String txt = text.getText();
+        String amount = txt.substring(20,23);
         return amount;
     }
 
     public String cardNumber(){
-        String p = text.getText();
-        String card = p.substring(41,47);
-        System.out.println(card);
+        String txt = text.getText();
+        String card = txt.substring(41,47);
         return card;
     }
 
     public String name(){
-        String p = text.getText();
-        String name = p.substring(54,62);
-        System.out.println(name);
+        String txt = text.getText();
+        String name = txt.substring(54,62);
         return name;
     }
 
-    public void confirmPurchase(){
-        okButton.click();
-    }
+    public void confirmPurchase(){okButton.click();}
 }
