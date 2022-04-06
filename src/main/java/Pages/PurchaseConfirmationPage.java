@@ -1,11 +1,18 @@
 package Pages;
 
+import io.netty.util.internal.shaded.org.jctools.queues.MessagePassingQueue;
 import net.jodah.failsafe.internal.util.Assert;
 import org.asynchttpclient.util.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class PurchaseConfirmationPage {
     @FindBy(xpath = "//h2[normalize-space()='Thank you for your purchase!']")
@@ -22,6 +29,7 @@ public class PurchaseConfirmationPage {
     }
 
     public String checkMessage(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         return confirmPurchase.getText();
     }
 
