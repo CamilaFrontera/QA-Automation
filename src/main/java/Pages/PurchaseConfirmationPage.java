@@ -29,22 +29,7 @@ public class PurchaseConfirmationPage {
 
     public String purchaseText(){
       return text.getText();
-        //String amount = txt.substring(20,23);
-        //return amount;
-
     }
-
-   // public String cardNumber(){
-   //     String txt = text.getText();
-   //     String card = txt.substring(41,47);
-   //     return card;
-   // }
-
-    //public String name(){
-    //    String txt = text.getText();
-    //    String name = txt.substring(54,62);
-    //    return name;
-    //}
 
     public void confirmPurchase(){okButton.click();}
 }

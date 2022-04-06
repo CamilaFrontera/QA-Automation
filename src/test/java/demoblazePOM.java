@@ -52,9 +52,6 @@ public class demoblazePOM {
         purchaseModalPage.fillForm(name, country,city,creditCard,month,year);
         softAssert.assertEquals(purchaseConfirmationPage.checkMessage(), "Thank you for your purchase!");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Purchase']")));
-        //softAssert.assertEquals(purchaseConfirmationPage.amount(), cartPage.savePrice());
-        //softAssert.assertEquals(purchaseConfirmationPage.cardNumber(),creditCard);
-        //softAssert.assertEquals(purchaseConfirmationPage.name(),name);
         softAssert.assertTrue(purchaseConfirmationPage.purchaseText().contains(cartPage.savePrice()));
         softAssert.assertTrue(purchaseConfirmationPage.purchaseText().contains(creditCard));
         softAssert.assertTrue(purchaseConfirmationPage.purchaseText().contains(name));
