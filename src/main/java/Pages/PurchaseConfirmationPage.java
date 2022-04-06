@@ -29,7 +29,7 @@ public class PurchaseConfirmationPage {
     }
 
     public String checkMessage(){
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         return confirmPurchase.getText();
     }
 
