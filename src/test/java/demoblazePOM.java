@@ -1,16 +1,14 @@
 import DataProviders.DataProviders;
 import Pages.*;
 import Utility.DriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import javax.xml.crypto.Data;
 
 public class demoblazePOM {
     final String URL = "https://www.demoblaze.com/index.html";
@@ -53,10 +51,14 @@ public class demoblazePOM {
         cartPage.placeOrder();
         purchaseModalPage.fillForm(name, country,city,creditCard,month,year);
         softAssert.assertEquals(purchaseConfirmationPage.checkMessage(), "Thank you for your purchase!");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='Purchase']")));
+        //softAssert.assertEquals(purchaseConfirmationPage.amount(), cartPage.savePrice());
+        //softAssert.assertEquals(purchaseConfirmationPage.cardNumber(),creditCard);
+        //softAssert.assertEquals(purchaseConfirmationPage.name(),name);
+        softAssert.assertTrue(purchaseConfirmationPage.purchaseText().contains(cartPage.savePrice()));
+        softAssert.assertTrue(purchaseConfirmationPage.purchaseText().contains(creditCard));
+        softAssert.assertTrue(purchaseConfirmationPage.purchaseText().contains(name));
         purchaseConfirmationPage.confirmPurchase();
-        softAssert.assertEquals(purchaseConfirmationPage.amount(), cartPage.savePrice());
-        softAssert.assertEquals(purchaseConfirmationPage.cardNumber(),creditCard);
-        softAssert.assertEquals(purchaseConfirmationPage.name(),name);
         softAssert.assertAll();
     }
 
